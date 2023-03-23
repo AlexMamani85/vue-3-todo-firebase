@@ -33,7 +33,7 @@
 </template>
 
 <script setup>
-import { prepareProjectsData, fetchSingleDocument, fetchAllDocuments, queryProjects } from './firebase/project'
+import { prepareProjectsData, fetchSingleDocument, fetchAllDocuments, queryProjects, watchProjectsWithDoneTasks } from './firebase/project'
 import BaseCheckbox from "./components/base/BaseCheckbox.vue";
 import AddTaskInput from "./components/task/AddTaskInput.vue";
 import TodoListItem from "./components/task/TodoListItem.vue";
@@ -47,11 +47,15 @@ import {
 } from "./store/mutation-types";
 import { useStore } from "vuex";
 import { computed } from "vue";
+import { onUnmounted } from "vue"
 let nextTaskId = 100;
 // await prepareProjectsData()
 // await fetchSingleDocument()
 // await fetchAllDocuments()
-queryProjects();
+// queryProjects();
+const unsub = watchProjectsWithDoneTasks()
+onUnmounted(unsub)
+
 const store = useStore();
 const activeProjectId = computed(() => store.state.project.activeProjectId);
 const projects = computed(() => store.getters[`project/projectsWithStats`]);
