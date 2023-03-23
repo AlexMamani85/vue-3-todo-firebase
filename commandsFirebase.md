@@ -52,4 +52,16 @@ Delete Collection NO
 
 # 121. Setting Up Data First (Important)
 
+```
 npm install firebase
+```
+
+# 128. Real-time Single Document Updates [Project]
+
+```
+start a collection
+CollectionID: profiles
+Document ID: me
+
+Field, Type, Value: activeProjectId, string, first
+```
