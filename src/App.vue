@@ -33,7 +33,7 @@
 </template>
 
 <script setup>
-import { prepareProjectsData } from './firebase/project'
+import { prepareProjectsData, fetchSingleDocument } from './firebase/project'
 import BaseCheckbox from "./components/base/BaseCheckbox.vue";
 import AddTaskInput from "./components/task/AddTaskInput.vue";
 import TodoListItem from "./components/task/TodoListItem.vue";
@@ -49,6 +49,7 @@ import { useStore } from "vuex";
 import { computed } from "vue";
 let nextTaskId = 100;
 await prepareProjectsData();
+await fetchSingleDocument();
 const store = useStore();
 const activeProjectId = computed(() => store.state.project.activeProjectId);
 const projects = computed(() => store.getters[`project/projectsWithStats`]);
