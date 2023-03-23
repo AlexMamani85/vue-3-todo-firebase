@@ -28,7 +28,8 @@
 </template>
 
 <script setup>
-import { useQueryProjects } from "./firebase/project"
+import { useQueryProjects, addProject } from "./firebase/project"
+console.log(await addProject())
 
 import { useUserProfile } from "./firebase/user"
 const userProfile = useUserProfile()
