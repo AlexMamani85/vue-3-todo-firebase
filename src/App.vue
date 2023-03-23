@@ -47,19 +47,13 @@ import {
 } from "./store/mutation-types";
 import { useStore } from "vuex";
 import { computed } from "vue";
-import { watch } from "vue"
-let nextTaskId = 100;
-// await prepareProjectsData()
-// await fetchSingleDocument()
-// await fetchAllDocuments()
-// queryProjects();
-const p = await useQueryProjects()
 
-watch(p, (val) => console.log(val))
+let nextTaskId = 100;
+const projects = useQueryProjects()
 
 const store = useStore();
 const activeProjectId = computed(() => store.state.project.activeProjectId);
-const projects = computed(() => store.getters[`project/projectsWithStats`]);
+//const projects = computed(() => store.getters[`project/projectsWithStats`]);
 const tasks = computed(() => store.getters[`project/activeProjectTasks`]);
 
 const onlyPending = computed({

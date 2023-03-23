@@ -88,7 +88,7 @@ export const watchProjectsWithDoneTasks = async () => {
 
 }
 
-export const useQueryProjects = async () => {
+export const useQueryProjects = () => {
   const projects = ref([])
 
   const q = query(

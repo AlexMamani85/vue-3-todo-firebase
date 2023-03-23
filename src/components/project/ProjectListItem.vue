@@ -8,7 +8,7 @@
     <div
       class="rounded-lg bg-gray-300 text-gray-800 px-2 font-normal w-8 text-center"
     >
-      {{ project.notDoneCount }}
+      {{ notDone }}
     </div>
   </div>
 </template>
@@ -22,6 +22,9 @@ const props = defineProps({ project: Object });
 const store = useStore();
 const activeProjectId = computed(() => store.state.project.activeProjectId);
 const isActive = computed(() => activeProjectId.value === props.project.id);
+const notDone = computed(
+  () => props.project.taskCount - props.project.taskDoneCount
+)
 const activateProject = (projectId) =>
   store.commit(`project/${SET_ACTIVE_PROJECT}`, projectId);
 </script>
