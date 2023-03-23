@@ -30,7 +30,7 @@ const props = defineProps({
     type: Object,
     required: true,
   },
-  projectId: Number,
+  projectId: String,
   done: Boolean,
   priority: Boolean,
 });
