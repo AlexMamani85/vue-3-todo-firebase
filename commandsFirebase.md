@@ -65,3 +65,25 @@ Document ID: me
 
 Field, Type, Value: activeProjectId, string, first
 ```
+
+# 132. Firestore Subcollections (Keeping Tracks)
+
+## Instructions for adding data
+
+```
+firebase
+first (data already entered)
+start collection
+Collection ID: tasks
+Next
+DocumentID: Auto-ID
+```
+
+## Add Data
+
+```
+Field, Type, Value: description, string, Task from Firestore
+Field, Type, Value: done, boolean, false
+Field, Type, Value: priority, boolean, false
+Save
+```
