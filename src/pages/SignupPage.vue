@@ -1,7 +1,8 @@
 <template>
-    <form class="h-full w-full" @submit.prevent="signin">
+    <form class="h-full w-full" @submit.prevent="signup">
       <div class="h-full flex flex-col items-center justify-center text-lg">
-        <div v-if="error"
+        <div
+          v-if="error"
           class="w-4/5 md:w-1/2 mb-4 rounded-md bg-red-50 border border-red-100 p-2"
         >{{ error }}</div>
         <div class="w-4/5 md:w-1/2">
@@ -32,25 +33,26 @@
         </div>
   
         <div class="w-4/5 md:w-1/2 mt-4">
-          <button class="w-full block rounded-md bg-indigo-500 text-white p-2" type="submit">Login</button>
+          <button class="w-full block rounded-md bg-indigo-500 text-white p-2" type="submit">Sign Up</button>
         </div>
   
         <div class="w-4/5 md:w-1/2 mt-4 text-center">
-          Don't have an account?
-          <RouterLink :to="{ name: 'signup' }" class="text-gray-500 underline">Signup</RouterLink>
+          Already have an account?
+          <RouterLink :to="{ name: 'login' }" class="text-gray-500 underline">Login</RouterLink>
         </div>
       </div>
     </form>
-  </template>   
-
-<script setup>
-import { useCredentials } from "./../composables/useCredentials"
-import { login } from "./../firebase/user"
-import { useRouter, RouterLink } from "vue-router"
-const { credentials, error, perform } = useCredentials()
-const router = useRouter()
-const signin = perform(async () => {
-  await login(credentials.email, credentials.password)
-  router.push({ name: "project" })
-})
-</script>
+  </template>
+  
+  <script setup>
+  import { useCredentials } from "./../composables/useCredentials"
+  import { createUser } from "./../firebase/user"
+  import { useRouter, RouterLink } from "vue-router"
+  
+  const { credentials, error, perform } = useCredentials()
+  const router = useRouter()
+  const signup = perform(async () => {
+    await createUser(credentials.email, credentials.password)
+    router.push({ name: "project" })
+  })
+  </script>
