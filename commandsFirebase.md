@@ -87,3 +87,21 @@ Field, Type, Value: done, boolean, false
 Field, Type, Value: priority, boolean, false
 Save
 ```
+
+# 140. Setting Up Authentication in Firebase
+
+```
+Authentication
+Get started
+Sign-in Providers
+Email-Password
+Enable
+Save
+```
+
+```
+Users
+Agregar Usuario
+alex@corre.com
+123456
+```
