@@ -28,11 +28,6 @@ export const logout = async () => {
   await signOut(auth)
 }
 
-login(
-  'alex.mamani@tecsup.edu.pe',
-  'abc123'
-)
-setTimeout(logout, 10000)
 
 export const useUserProfile = () => {
   const userProfile = ref({})
