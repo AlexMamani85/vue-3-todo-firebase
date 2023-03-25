@@ -30,7 +30,7 @@ export const logout = async () => {
 
 login(
   'alex.mamani@tecsup.edu.pe',
-  '123abc'
+  'abc123'
 )
 setTimeout(logout, 10000)
 
