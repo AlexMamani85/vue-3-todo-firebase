@@ -51,6 +51,7 @@
     () => userProfile.value?.activeProjectId
   )
   const tasks = useQueryTasks(activeProjectId)
+  provide("tasks", tasks)
   provide("activeProjectId", activeProjectId)
   const store = useStore();
   const onlyPending = computed({
