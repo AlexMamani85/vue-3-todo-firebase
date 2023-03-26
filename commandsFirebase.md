@@ -105,3 +105,28 @@ Agregar Usuario
 alex@corre.com
 123456
 ```
+
+# CHORE: 148. Project Security Rules - Practical Example
+
+### firebase.google.com/docs/rules/rules-language#firestore
+
+### https://firebase.google.com/docs/rules/rules-language?hl=es-419#firestore
+
+## Go to: Firestore Database/Reglas
+
+```
+match /projects/{projectId} {
+    allow create: if request.auth != null
+    allow read, write: if request.auth != null && request.auth.uid == resource.data.uid
+
+    match /tasks/{taskId} {
+        allow read, write: if request.auth != null && request.auth.uid == get(/databases/$(database)/documents/projects/$(projectId).data.uid)
+    }
+}
+
+match /profiles/{profileId} {
+allow read, write: if request.auth != null && request.auth.uid == profileId
+}
+```
+
+> Publish
